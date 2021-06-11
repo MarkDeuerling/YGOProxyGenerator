@@ -50,19 +50,20 @@ var imagePos = 0;
 var failedLines = [];
 
 const pdfPointsPerInch = 72;
-const cardWidth = 2.32 * pdfPointsPerInch;// a card is 2.32 inch and 1 point is 1/72 inch
+// const cardWidth = 2.32 * pdfPointsPerInch;// a card is 2.32 inch and 1 point is 1/72 inch
+const cardWidth = pdfPointsPerInch;// a card is 2.32 inch and 1 point is 1/72 inch
 //const cardHeight = 3.25 * pdfPointsPerInch;
 const pdfWidth = 8.26 * pdfPointsPerInch;
 const pdfHeight= 11.69 * pdfPointsPerInch;
 
 
 
-function addImageToDoc(doc){
+function addImageToDoc(doc) {
 	return (img_url)=>{			
 			console.log('image: ');
 			console.log(img_url);
 			var img = doc.openImage(img_url);
-			var scaledWidth = cardWidth * document.getElementById("card_scale").value;
+      var scaledWidth = cardWidth * document.getElementById("card_scale").value * document.getElementById("width_cards").value;
 			console.log("scaledcardwith " + scaledWidth);
 			var scaledHeight = scaledWidth / img.width * img.height;
 			var scaledWidthPlusMargin = scaledWidth + Number(document.getElementById("margin_cards").value);
